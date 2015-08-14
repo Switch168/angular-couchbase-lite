@@ -233,6 +233,13 @@
                 return db.get().$promise;
               });
             },
+
+            delete: function() {
+              $log.debug("Asking Couchbase Lite to delete database [" + databaseName + "]");
+              return openDatabase.then(function (db) {
+                return db.delete({}, null).$promise;
+              });
+            },
             
             all: function (spec, records) {
               spec = angular.extend({}, spec, {db: databaseName});
